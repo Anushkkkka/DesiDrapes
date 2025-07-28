@@ -1,30 +1,30 @@
 import React from 'react'
 import {Routes,Route} from 'react-router-dom'
-import home_pg from './pages/home_pg'
-import collection from './pages/collection'
-import about from './pages/about'
-import contact from './pages/contact'
-import product from './pages/product'
-import cart_pg from './pages/cart_pg'
-import login_pg from './pages/login_pg'
-import placeorder from './pages/placeorder'
 import OrderPage from './pages/OrderPage'
 import NavigationBar from './components/NavigationBar'
+import Homepg from './pages/Homepg'
+import Collectionpg from './pages/Collectionpg'
+import Aboutpg from './pages/Aboutpg'
+import Contactpg from './pages/Contactpg'
+import Productspg from './pages/Productspg'
+import Cartpg from './pages/Cartpg'
+import Loginpg from './pages/Loginpg'
+import Placeorderpg from './pages/Placeorderpg'
 
 const App = () => {
   return (
     <div className= 'px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]'>
       <NavigationBar />
       <Routes>
-            <Route path ='/' element={<home_pg/>}/>
-            <Route path ='/collection' element={<collection/>}/>
-            <Route path ='/about' element={<about/>}/>
-            <Route path ='/contact' element={<contact/>}/>
-            <Route path ='/product/:productId' element={<product/>}/>
-            <Route path ='/cart' element={<cart_pg/>}/>
-            <Route path ='/login' element={<login_pg/>}/>
-            <Route path ='/place-order' element={<placeorder/>}/>
+            <Route path ='/' element={<Homepg/>}/>
             <Route path ='/orders' element={<OrderPage/>}/>
+            <Route path ='/collection' element={<Collectionpg/>}/>
+            <Route path ='/about' element={<Aboutpg/>}/>
+            <Route path ='/contact' element={<Contactpg/>}/>
+            <Route path ='/product' element={<Productspg/>}/>
+            <Route path ='/cart' element={<Cartpg/>}/>
+            <Route path ='/login' element={<Loginpg/>}/>
+            <Route path ='/placeorder'element={<Placeorderpg/>}/>
       </Routes>
     </div>
   )

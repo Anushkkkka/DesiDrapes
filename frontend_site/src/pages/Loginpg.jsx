@@ -1,6 +1,6 @@
 import React from 'react'
 
-const collection = () => {
+const Loginpg = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const collection = () => {
   )
 }
 
-export default collection
+export default Loginpg

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const placeorder = () => {
+const Collectionpg = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const placeorder = () => {
   )
 }
 
-export default placeorder
+export default Collectionpg

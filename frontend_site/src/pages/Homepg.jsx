@@ -1,13 +1,13 @@
 import React from 'react'
 import HomeContent from '../components/HomeContent'
 
-
-const home_pg = () => {
+const Homepg = () => {
   return (
     <div>
-      <HomeContent />
+        <HomeContent />
+      
     </div>
   )
 }
 
-export default home_pg
+export default Homepg

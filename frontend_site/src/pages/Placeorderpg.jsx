@@ -1,6 +1,6 @@
 import React from 'react'
 
-const cart_pg = () => {
+const Placeorderpg = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const cart_pg = () => {
   )
 }
 
-export default cart_pg
+export default Placeorderpg
