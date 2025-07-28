@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Home_content = () => {
+const HomeContent = () => {
   return (
-    <div className='flex flex-col sm:flex-row border-gray-400'>
+        <div className='flex flex-col sm:flex-row border-gray-400'>
         {/*Left Side on home page*/}
         <div className='w-full sm:w-1/2 flex items-center justify-center py-10 sm:py-0'>
             <div className='text-[#414141]'>
@@ -20,4 +20,4 @@ const Home_content = () => {
   )
 }
 
-export default Home_content
+export default HomeContent

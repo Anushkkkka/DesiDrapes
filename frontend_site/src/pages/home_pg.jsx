@@ -1,10 +1,11 @@
 import React from 'react'
-import Home_content from '../components/Home_content'
+import HomeContent from '../components/HomeContent'
+
 
 const home_pg = () => {
   return (
     <div>
-      <Home_content />
+      <HomeContent />
     </div>
   )
 }
