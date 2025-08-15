@@ -80,6 +80,7 @@ import w8 from './w8.jpeg';
 import w9 from './w9.jpeg';
 import searchicon from './searchicon.png';
 import profileicon from './profileicon.png';
+import modelhp from './modelhp.jpeg';
 
 export const assets = {
   bin,
@@ -164,6 +165,7 @@ export const assets = {
   w9,
   searchicon,
   profileicon,
+  modelhp,
 };
 
 export const product = [
