@@ -1,0 +1,13 @@
+**/node_modules
+**/dist
+**/coverage
+**/.env
+**/.env.*
+!**/.env.example
+**/*.log
+.git
+.github
+.vscode
+backend/uploads
+docs
+n8n
