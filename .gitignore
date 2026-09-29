@@ -3,3 +3,8 @@ frontend_site/dist/
 node_modules/
 frontend/node_modules/
 .env
+backend/uploads/
+coverage/
+*.log
+.env.*
+!.env.example

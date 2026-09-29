@@ -1,0 +1,1365 @@
+[
+  {
+    "legacyId": "aa1",
+    "name": "Pink lehenga for little girls",
+    "description": "A light weight, pink color, 3 piece set, net and cotton fabric",
+    "price": 80,
+    "images": [
+      "/images/k1.jpeg"
+    ],
+    "category": "Kids",
+    "subcategory": "Girls",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "aa2",
+    "name": "Indowestern 2 piece set for little girls",
+    "description": "A light weight, red color, 2 piece set (plazo and crop top),floral design, cotton fabric",
+    "price": 70,
+    "images": [
+      "/images/k2.jpeg"
+    ],
+    "category": "Kids",
+    "subcategory": "Girls",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "aa3",
+    "name": "3 piece kurta set",
+    "description": "A light weight, blue color, 3 piece set(Kurta pajma and Jacket),cotton fabric",
+    "price": 100,
+    "images": [
+      "/images/k3.jpeg"
+    ],
+    "category": "Kids",
+    "subcategory": "Boys",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "aa4",
+    "name": "2 piece kurta set for little girls",
+    "description": "A light weight, orange color kurta with pink color shurg, 3 piece set, cotton fabric",
+    "price": 70,
+    "images": [
+      "/images/k4.jpeg"
+    ],
+    "category": "Kids",
+    "subcategory": "Girls",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "aa5",
+    "name": "Indowestern set for little girls",
+    "description": "A light weight, orange color, 3 piece set- tube top, gharara and dupatta, net and cotton fabric",
+    "price": 100,
+    "images": [
+      "/images/k5.jpeg"
+    ],
+    "category": "Kids",
+    "subcategory": "Girls",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "aa6",
+    "name": "Green Lehenga for little girls",
+    "description": "A light weight, green color, 3 piece set- lehenga, choli and dupatta, net and georgette fabric",
+    "price": 120,
+    "images": [
+      "/images/k5.jpeg"
+    ],
+    "category": "Kids",
+    "subcategory": "Girls",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "aa7",
+    "name": "Anarkali kurta for girls",
+    "description": "A light weight, blue color, 2 piece set- kurta and dupatta, net and cotton fabric",
+    "price": 60,
+    "images": [
+      "/images/k7.jpeg"
+    ],
+    "category": "Kids",
+    "subcategory": "Girls",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "aa8",
+    "name": "kurta set for little girls",
+    "description": "A light weight, red color, 3 piece set- kurta, pant and dupatta, net and cotton fabric",
+    "price": 120,
+    "images": [
+      "/images/k8.jpeg"
+    ],
+    "category": "Kids",
+    "subcategory": "Girls",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "aa9",
+    "name": "White colour three piece kurta set",
+    "description": "A light weight, White color, 3 piece set- kurta ,pajama and jacket, cotton and silk fabric",
+    "price": 130,
+    "images": [
+      "/images/k9.jpeg"
+    ],
+    "category": "Kids",
+    "subcategory": "Boys",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "aa10",
+    "name": "Black pathani kurta set",
+    "description": "A light weight, black color, 2 piece set- kurta and bottoms, crepe fabric",
+    "price": 60,
+    "images": [
+      "/images/k10.jpeg"
+    ],
+    "category": "Kids",
+    "subcategory": "Boys",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "aa11",
+    "name": "Golden kurta set for boys",
+    "description": "A light weight, golden color, 2 piece set- kurta, pajama, polyester and satin fabric",
+    "price": 100,
+    "images": [
+      "/images/k11.jpeg"
+    ],
+    "category": "Kids",
+    "subcategory": "Boys",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "aa12",
+    "name": "Kurta- Dhoti set for boys",
+    "description": "A light weight, red and white color, 2 piece set- kurta and dhoti, cotton fabric",
+    "price": 80,
+    "images": [
+      "/images/k12.jpeg"
+    ],
+    "category": "Kids",
+    "subcategory": "Boys",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "aa13",
+    "name": "Green kurta pajama set for boys",
+    "description": "A light weight, green and golden color, 2 piece set- kurta and pajama, cotton and polyester fabric",
+    "price": 70,
+    "images": [
+      "/images/k13.jpeg"
+    ],
+    "category": "Kids",
+    "subcategory": "Boys",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "aa14",
+    "name": "Multicolour kurta for boys",
+    "description": "A light weight, multi color kurta ,cotton fabric",
+    "price": 40,
+    "images": [
+      "/images/k14.jpeg"
+    ],
+    "category": "Kids",
+    "subcategory": "Boys",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "aa15",
+    "name": "kruta and skirt set for girls",
+    "description": "A light weight, yellow color, 2 piece set- kurta and skirt, polyester fabric ,seelves included",
+    "price": 70,
+    "images": [
+      "/images/k15.jpeg"
+    ],
+    "category": "Kids",
+    "subcategory": "Girls",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "aa16",
+    "name": "3 piece margenta kurta set for boys",
+    "description": "A light weight, margenta color, 3 piece set- kurta, pajama and jacket, silk and polyester fabric, mirror work on jacket",
+    "price": 150,
+    "images": [
+      "/images/k16.jpeg"
+    ],
+    "category": "Kids",
+    "subcategory": "Boys",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "aa17",
+    "name": "3 piece neheru jacket kurta set for boys",
+    "description": "A light weight, grey and yellow color, 3 piece set- kurta, pajama and nehru jacket, silk and polyester fabric, floral design on jacket",
+    "price": 90,
+    "images": [
+      "/images/k16.jpeg"
+    ],
+    "category": "Kids",
+    "subcategory": "Boys",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "aa18",
+    "name": "complete lehenga for girls",
+    "description": "A light weight, pink and purple color, 3 piece set- lehenga, choli and dupatta, polyester fabric ,seelves included",
+    "price": 120,
+    "images": [
+      "/images/k18.jpeg"
+    ],
+    "category": "Kids",
+    "subcategory": "Girls",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "aa19",
+    "name": "short kurta and plazo set for girls",
+    "description": "A light weight, green and white color, 3 piece set- kurta, plazo and dupatta, polyester fabric ,seelves included",
+    "price": 80,
+    "images": [
+      "/images/k19.jpeg"
+    ],
+    "category": "Kids",
+    "subcategory": "Girls",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "aa20",
+    "name": "Blue kurta for boys",
+    "description": "A light weight, blue color kurta ,cotton fabric",
+    "price": 30,
+    "images": [
+      "/images/k20.jpeg"
+    ],
+    "category": "Kids",
+    "subcategory": "Boys",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "aa21",
+    "name": "Anarkali kurta and pant set for girls",
+    "description": "A light weight, red and white color, 3 piece set- kurta, pant and dupatta, polyester and net fabric , embroidery work",
+    "price": 110,
+    "images": [
+      "/images/k21.jpeg"
+    ],
+    "category": "Kids",
+    "subcategory": "Girls",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "aa22",
+    "name": "Orange kurta and golden chudidaar pajama set for boys",
+    "description": "A light weight, orange and golden color, 2 piece set- kurta and pajama, cotton and polyester fabric",
+    "price": 65,
+    "images": [
+      "/images/k22.jpeg"
+    ],
+    "category": "Kids",
+    "subcategory": "Boys",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "aa23",
+    "name": "complete lehenga for girls",
+    "description": "A light weight, white and purple color, 3 piece set- lehenga, choli and dupatta, polyester fabric",
+    "price": 135,
+    "images": [
+      "/images/k23.jpeg"
+    ],
+    "category": "Kids",
+    "subcategory": "Girls",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "aa24",
+    "name": "red and green kurta for boys",
+    "description": "A light weight, red and green color kurta with printed design ,cotton fabric",
+    "price": 45,
+    "images": [
+      "/images/k24.jpeg"
+    ],
+    "category": "Kids",
+    "subcategory": "Boys",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "bb1",
+    "name": "Off white kurta for men",
+    "description": "A light weight, off white color kurta ,cotton fabric",
+    "price": 50,
+    "images": [
+      "/images/men1.png"
+    ],
+    "category": "Men",
+    "subcategory": "Kurta",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "bb2",
+    "name": "Red sherwani for men",
+    "description": "A light weight, Red color sherwani with golden work, cotton fabric",
+    "price": 100,
+    "images": [
+      "/images/men2.png"
+    ],
+    "category": "Men",
+    "subcategory": "Sherwani",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "bb3",
+    "name": "Blue shirt for men",
+    "description": "A light weight, off white color kurta ,cotton fabric",
+    "price": 40,
+    "images": [
+      "/images/men3.png"
+    ],
+    "category": "Men",
+    "subcategory": "Shirt",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "bb4",
+    "name": "white and Black sweater for men",
+    "description": "A light weight, white and black color sweater , woolan fabric",
+    "price": 80,
+    "images": [
+      "/images/men4.jpeg"
+    ],
+    "category": "Men",
+    "subcategory": "Sweater",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "bb5",
+    "name": "Cream color kurta for boys",
+    "description": "A light weight, cream color kurta ,cotton fabric",
+    "price": 60,
+    "images": [
+      "/images/men5.jpeg"
+    ],
+    "category": "Men",
+    "subcategory": "Kurta",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "bb6",
+    "name": "Blue sherwani for men",
+    "description": "A light weight, blue color sherwani with white work, cotton fabric",
+    "price": 100,
+    "images": [
+      "/images/men6.jpeg"
+    ],
+    "category": "Men",
+    "subcategory": "Sherwani",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "bb7",
+    "name": "Blue kurta for men",
+    "description": "A light weight, Blue color kurta with floral design embroidery , cotton fabric",
+    "price": 80,
+    "images": [
+      "/images/men7.jpg"
+    ],
+    "category": "Men",
+    "subcategory": "Kurta",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "bb8",
+    "name": "Pink sherwani with pajama set for men",
+    "description": "A light weight, pink color sherwani with white pajama and embroidery on the sherwani, cotton fabric",
+    "price": 110,
+    "images": [
+      "/images/men8.jpeg"
+    ],
+    "category": "Men",
+    "subcategory": "Sherwani",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "bb9",
+    "name": "Blue floral print kurta for men",
+    "description": "A light weight, Blue color kurta with floral print, georgette fabric",
+    "price": 70,
+    "images": [
+      "/images/men9.jpeg"
+    ],
+    "category": "Men",
+    "subcategory": "Kurta",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "bb10",
+    "name": "3 piece neheru jacket kurta set for men",
+    "description": "A light weight, brown and cream color, 3 piece set- kurta, pajama and nehru jacket, silk and polyester fabric",
+    "price": 150,
+    "images": [
+      "/images/men10.jpeg"
+    ],
+    "category": "Men",
+    "subcategory": "Kurta Set",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "bb11",
+    "name": "3 piece kurta set for men",
+    "description": "A light weight, black and golden color, 3 piece set- kurta, pajama and shawl, silk and polyester fabric",
+    "price": 230,
+    "images": [
+      "/images/men11.jpeg"
+    ],
+    "category": "Men",
+    "subcategory": "Kurta Set",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "bb12",
+    "name": "3 piece neheru jacket kurta set for men",
+    "description": "A light weight, blue and white color, 3 piece set- kurta, pajama and nehru jacket, silk and polyester fabric",
+    "price": 120,
+    "images": [
+      "/images/men12.jpeg"
+    ],
+    "category": "Men",
+    "subcategory": "Kurta Set",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "bb13",
+    "name": "2 piece kurta and patiala set for men",
+    "description": "A light weight,navy blue and cream color, 2 piece set- kurta and pajama, silk and polyester fabric",
+    "price": 150,
+    "images": [
+      "/images/men13.jpeg"
+    ],
+    "category": "Men",
+    "subcategory": "Kurta Set",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "bb14",
+    "name": "3 piece sherwani and kurta set for men",
+    "description": "A light weight, dark blue and white color, 3 piece set- kurta, pajama and sherwani, silk and polyester fabric",
+    "price": 190,
+    "images": [
+      "/images/men14.jpeg"
+    ],
+    "category": "Men",
+    "subcategory": "Kurta Set",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "bb15",
+    "name": "3 piece kurta and lungi set for men",
+    "description": "A light weight, white and golden color, 3 piece set- kurta, dhoti and dupatta, silk fabric",
+    "price": 200,
+    "images": [
+      "/images/men15.jpeg"
+    ],
+    "category": "Men",
+    "subcategory": "Kurta Set",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "bb16",
+    "name": "2 piece kurta and pajama set for men",
+    "description": "A light weight,black color, 2 piece set- kurta and pajama, silk fabric",
+    "price": 140,
+    "images": [
+      "/images/men13.jpeg"
+    ],
+    "category": "Men",
+    "subcategory": "Kurta Set",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "bb17",
+    "name": "Green thread embroidery kurta for men",
+    "description": "A light weight, green color kurta with thread embroidery, cotton fabric",
+    "price": 60,
+    "images": [
+      "/images/men17.jpeg"
+    ],
+    "category": "Men",
+    "subcategory": "Kurta",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "bb18",
+    "name": "Peach Jhodhpuri Suit for men",
+    "description": "A light weight, Peach coat and pant, georgette fabric",
+    "price": 370,
+    "images": [
+      "/images/men18.jpeg"
+    ],
+    "category": "Men",
+    "subcategory": "Suit",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "bb19",
+    "name": "Peach kurta with floral print for men",
+    "description": "A light weight, Peach color kurta with floral print, georgette fabric",
+    "price": 50,
+    "images": [
+      "/images/men19.jpeg"
+    ],
+    "category": "Men",
+    "subcategory": "Kurta",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "bb20",
+    "name": "Peacha and golden sherwani and white pajama for men",
+    "description": "A light weight, Peach sherwani with golden work and white pajama, georgette and cotton fabric",
+    "price": 360,
+    "images": [
+      "/images/men20.jpeg"
+    ],
+    "category": "Men",
+    "subcategory": "Sherwani",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "bb21",
+    "name": "3 Piece navy blue sherwani set for men",
+    "description": "A light weight, navy blue color sherwani with short kurta and pajama, georgette and cotton fabric",
+    "price": 200,
+    "images": [
+      "/images/men21.jpeg"
+    ],
+    "category": "Men",
+    "subcategory": "Sherwani",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "bb22",
+    "name": "3 piece neheru jacket kurta set for men",
+    "description": "A light weight, Red and white color, 3 piece set- kurta, pajama and nehru jacket, silk and polyester fabric",
+    "price": 220,
+    "images": [
+      "/images/men22.jpeg"
+    ],
+    "category": "Men",
+    "subcategory": "Kurta Set",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "bb23",
+    "name": "3 piece neheru jacket kurta set for men",
+    "description": "A light weight, Teal blue color, 3 piece set- kurta, pajama and nehru jacket, silk and polyester fabric",
+    "price": 260,
+    "images": [
+      "/images/men23.jpeg"
+    ],
+    "category": "Men",
+    "subcategory": "Kurta Set",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "bb24",
+    "name": "3 piece sherwani with floral print and kurta set for men",
+    "description": "A light weight, white color, 3 piece set- kurta, pajama and sherwani, silk and polyester fabric",
+    "price": 290,
+    "images": [
+      "/images/men24.jpeg"
+    ],
+    "category": "Men",
+    "subcategory": "Kurta Set",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "bb25",
+    "name": "Yellow floral print kurta for men",
+    "description": "A light weight, yellow color kurta with floral print, cotton fabric",
+    "price": 65,
+    "images": [
+      "/images/men17.jpeg"
+    ],
+    "category": "Men",
+    "subcategory": "Kurta",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "cc1",
+    "name": "Red Silk Saree",
+    "description": "A luxurious red silk saree with gold zari border and intricate traditional motifs",
+    "price": 120,
+    "images": [
+      "/images/w1.png"
+    ],
+    "category": "Women",
+    "subcategory": "Saree",
+    "sizes": [
+      "Free Size"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "cc2",
+    "name": "Green Embroidered Salwar Kameez",
+    "description": "An elegant green salwar kameez set with detailed gold thread embroidery and matching churidar pants",
+    "price": 95,
+    "images": [
+      "/images/w2.png"
+    ],
+    "category": "Women",
+    "subcategory": "Salwar Kameez",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "cc3",
+    "name": "Black Sequin Saree",
+    "description": "A sophisticated black saree paired with a sequin-embellished blouse for a striking evening look",
+    "price": 130,
+    "images": [
+      "/images/w3.jpeg"
+    ],
+    "category": "Women",
+    "subcategory": "Saree",
+    "sizes": [
+      "Free Size"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "cc4",
+    "name": "Green Floral Anarkali Gown",
+    "description": "A floor-length green anarkali gown featuring geometric floral prints and a matching dupatta",
+    "price": 110,
+    "images": [
+      "/images/w4.jpeg"
+    ],
+    "category": "Women",
+    "subcategory": "Anarkali",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "cc5",
+    "name": "Blue Lace Saree",
+    "description": "A delicate sky-blue saree embellished with lace detailing and subtle sequin work",
+    "price": 125,
+    "images": [
+      "/images/w5.jpeg"
+    ],
+    "category": "Women",
+    "subcategory": "Saree",
+    "sizes": [
+      "Free Size"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "cc6",
+    "name": "Navy Blue Embroidered Salwar Kameez",
+    "description": "A navy blue salwar kameez set in breathable fabric, featuring intricate silver thread embroidery and a matching dupatta",
+    "price": 90,
+    "images": [
+      "/images/w6.jpeg"
+    ],
+    "category": "Women",
+    "subcategory": "Salwar Kameez",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "cc7",
+    "name": "Emerald Green Bridal Lehenga",
+    "description": "A luxurious emerald green lehenga choli with heavy gold zari and sequin work, paired with an embroidered dupatta",
+    "price": 200,
+    "images": [
+      "/images/w7.jpeg"
+    ],
+    "category": "Women",
+    "subcategory": "Lehenga",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "cc8",
+    "name": "Pastel Pink Sharara Suit",
+    "description": "A pastel pink sharara set crafted from georgette, featuring delicate thread embroidery and flowing flared pants",
+    "price": 85,
+    "images": [
+      "/images/w8.jpeg"
+    ],
+    "category": "Women",
+    "subcategory": "Sharara",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "cc9",
+    "name": "Orange & Blue Silk Saree",
+    "description": "A vibrant orange silk saree with contrasting blue border and traditional motifs, perfect for festive occasions",
+    "price": 110,
+    "images": [
+      "/images/w9.jpeg"
+    ],
+    "category": "Women",
+    "subcategory": "Saree",
+    "sizes": [
+      "Free Size"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "cc10",
+    "name": "Mustard Orange Embroidered Lehenga",
+    "description": "A mustard orange lehenga with exquisite thread and sequin embroidery, paired with a sleeveless choli and dupatta",
+    "price": 150,
+    "images": [
+      "/images/w10.jpeg"
+    ],
+    "category": "Women",
+    "subcategory": "Lehenga",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "cc11",
+    "name": "Mint Green Chanderi Suit",
+    "description": "A mint green Chanderi suit set featuring block prints and metallic zari highlights, with straight pants and dupatta",
+    "price": 100,
+    "images": [
+      "/images/w11.jpeg"
+    ],
+    "category": "Women",
+    "subcategory": "Salwar Kameez",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "cc12",
+    "name": "Ivory Flowy Anarkali",
+    "description": "An ivory floor-length Anarkali dress with subtle lace detailing and flared hem, ideal for elegant gatherings",
+    "price": 120,
+    "images": [
+      "/images/w12.jpeg"
+    ],
+    "category": "Women",
+    "subcategory": "Anarkali",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "cc13",
+    "name": "Grey Printed One-Shoulder Saree",
+    "description": "A contemporary grey saree gown with one-shoulder drape and all-over multicolor prints, perfect for fusion events",
+    "price": 115,
+    "images": [
+      "/images/w13.jpeg"
+    ],
+    "category": "Women",
+    "subcategory": "Saree Gown",
+    "sizes": [
+      "Free Size"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "cc14",
+    "name": "Teal Embroidered Anarkali Gown",
+    "description": "A teal Anarkali gown with heavy gold embroidery, a fitted bodice, and flowing skirt, paired with dupatta",
+    "price": 140,
+    "images": [
+      "/images/w14.jpeg"
+    ],
+    "category": "Women",
+    "subcategory": "Anarkali",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "cc15",
+    "name": "Gold Embellished Saree",
+    "description": "A glamorous gold saree with sequin and bead embellishments, accompanied by a matching blouse for evening wear",
+    "price": 160,
+    "images": [
+      "/images/w15.jpeg"
+    ],
+    "category": "Women",
+    "subcategory": "Saree",
+    "sizes": [
+      "Free Size"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "cc16",
+    "name": "Teal Printed Straight Salwar Kameez",
+    "description": "A teal straight-cut salwar kameez with delicate white floral prints, made in soft cotton blend",
+    "price": 88,
+    "images": [
+      "/images/w16.jpeg"
+    ],
+    "category": "Women",
+    "subcategory": "Salwar Kameez",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "cc17",
+    "name": "Navy Blue Palazzo Suit",
+    "description": "A navy blue palazzo suit with intricate silver thread embroidery and matching dupatta",
+    "price": 98,
+    "images": [
+      "/images/w17.jpeg"
+    ],
+    "category": "Women",
+    "subcategory": "Palazzo Suit",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "cc18",
+    "name": "Mustard Yellow Anarkali Gown",
+    "description": "A mustard yellow Anarkali gown featuring white floral motifs and a flared hem",
+    "price": 105,
+    "images": [
+      "/images/w18.jpeg"
+    ],
+    "category": "Women",
+    "subcategory": "Anarkali",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "cc19",
+    "name": "Hot Pink Jacket Lehenga",
+    "description": "A vibrant hot pink lehenga choli with matching embroidered jacket and dupatta",
+    "price": 175,
+    "images": [
+      "/images/w19.jpeg"
+    ],
+    "category": "Women",
+    "subcategory": "Lehenga",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "cc20",
+    "name": "Maroon Embroidered Straight Kurta",
+    "description": "A maroon straight kurta with gold embroidery on neckline and sleeves, paired with churidar",
+    "price": 92,
+    "images": [
+      "/images/w20.jpeg"
+    ],
+    "category": "Women",
+    "subcategory": "Kurta",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "cc21",
+    "name": "Pink & Orange Ombre Lehenga",
+    "description": "A striking ombre lehenga blending pink and orange hues, embellished with sequin work",
+    "price": 160,
+    "images": [
+      "/images/w21.jpeg"
+    ],
+    "category": "Women",
+    "subcategory": "Lehenga",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "cc22",
+    "name": "Gold Satin Evening Gown",
+    "description": "A floor-length gold satin gown with high neck and subtle sequin detailing",
+    "price": 140,
+    "images": [
+      "/images/w22.jpeg"
+    ],
+    "category": "Women",
+    "subcategory": "Gown",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "cc23",
+    "name": "Peach Floral Printed Kurta Set",
+    "description": "A peach kurta set with all-over rose print and straight pants, in light cotton fabric",
+    "price": 85,
+    "images": [
+      "/images/w23.jpeg"
+    ],
+    "category": "Women",
+    "subcategory": "Kurta Set",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": true
+  },
+  {
+    "legacyId": "cc24",
+    "name": "Yellow Floral Maxi Dress",
+    "description": "A sunny yellow maxi dress with red floral prints, sleeveless design, and flowing skirt",
+    "price": 75,
+    "images": [
+      "/images/w24.jpeg"
+    ],
+    "category": "Women",
+    "subcategory": "Maxi Dress",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": false
+  },
+  {
+    "legacyId": "cc25",
+    "name": "Emerald Green Straight Salwar Kameez",
+    "description": "An emerald green straight salwar kameez with navy embroidered dupatta and churidar pants",
+    "price": 93,
+    "images": [
+      "/images/w25.jpeg"
+    ],
+    "category": "Women",
+    "subcategory": "Salwar Kameez",
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "bestseller": true
+  }
+]
