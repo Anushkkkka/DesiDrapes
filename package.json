@@ -23,6 +23,7 @@
     "prisma:generate": "npm --workspace backend run prisma:generate",
     "prisma:migrate": "npm --workspace backend run prisma:migrate",
     "db:seed": "npm --workspace backend run db:seed",
-    "db:reset": "npm --workspace backend run db:reset"
+    "db:reset": "npm --workspace backend run db:reset",
+    "e2e": "npm --workspace frontend run e2e"
   }
 }
