@@ -12,7 +12,7 @@ import { validate } from '../../middleware/validate.js';
 import { requireAdmin } from '../../middleware/auth.js';
 import { audit } from '../../services/events.js';
 import { orderInclude, serializeOrder, updateOrderStatus } from '../orders/orders.service.js';
-import { PRODUCT_CACHE_PREFIX, productInclude, ratingsFor, serializeProduct, uniqueSlug } from '../products/products.service.js';
+import { PRODUCT_CACHE_PREFIX, productInclude, ratingsFor, serializeProduct, sortSizes, uniqueSlug } from '../products/products.service.js';
 import { dashboardStats } from './stats.service.js';
 
 export const UPLOAD_DIR = path.resolve('uploads');
@@ -106,6 +106,21 @@ router.get(
     ]);
     const ratings = await ratingsFor(products.map((p) => p.id));
     res.json({ items: products.map((p) => serializeProduct(p, ratings.get(p.id))), ...pageMeta(q, total) });
+  }),
+);
+
+/** Includes archived products and per-size alert thresholds, unlike the public endpoint. */
+router.get(
+  '/products/:id',
+  asyncHandler(async (req, res) => {
+    const product = await prisma.product.findUnique({ where: { id: req.params.id }, include: productInclude });
+    if (!product) throw notFound('Product');
+    res.json({
+      product: {
+        ...serializeProduct(product),
+        variants: sortSizes(product.variants).map((v) => ({ id: v.id, size: v.size, stock: v.stock, lowStockThreshold: v.lowStockThreshold })),
+      },
+    });
   }),
 );
 

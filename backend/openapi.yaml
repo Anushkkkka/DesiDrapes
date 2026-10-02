@@ -1,0 +1,417 @@
+openapi: 3.0.3
+info:
+  title: DesiDrapes API
+  version: 1.0.0
+  description: |
+    REST API for the DesiDrapes e-commerce platform.
+
+    **Auth:** log in via `POST /api/auth/login`; the API sets an httpOnly `dd_token` cookie
+    (a `Authorization: Bearer <jwt>` header also works). Admin routes require the `ADMIN` role.
+    `/api/internal/*` routes are for n8n and require the `x-api-key` header.
+
+    **Errors** always look like `{ "error": { "code", "message", "details?" } }`.
+
+    **Demo accounts:** `customer@desidrapes.com / Customer@123`, `admin@desidrapes.com / Admin@12345`.
+servers:
+  - url: http://localhost:4000
+tags:
+  - name: Health
+  - name: Auth
+  - name: Products
+  - name: Orders
+  - name: Payments
+  - name: Notifications
+  - name: AI
+  - name: Admin
+  - name: Internal (n8n)
+
+components:
+  securitySchemes:
+    cookieAuth: { type: apiKey, in: cookie, name: dd_token }
+    bearerAuth: { type: http, scheme: bearer, bearerFormat: JWT }
+    serviceKey: { type: apiKey, in: header, name: x-api-key }
+  responses:
+    Error:
+      description: Error
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/Error' }
+  parameters:
+    Page: { name: page, in: query, schema: { type: integer, minimum: 1, default: 1 } }
+    Id: { name: id, in: path, required: true, schema: { type: string } }
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code: { type: string, example: VALIDATION_ERROR }
+            message: { type: string }
+            details: {}
+    User:
+      type: object
+      properties:
+        id: { type: string }
+        email: { type: string, format: email }
+        name: { type: string }
+        role: { type: string, enum: [CUSTOMER, ADMIN] }
+        createdAt: { type: string, format: date-time }
+    Variant:
+      type: object
+      properties:
+        id: { type: string }
+        size: { type: string, example: M }
+        stock: { type: integer }
+        lowStock: { type: boolean }
+    Product:
+      type: object
+      properties:
+        id: { type: string }
+        name: { type: string }
+        slug: { type: string }
+        description: { type: string }
+        price: { type: number, example: 120 }
+        images: { type: array, items: { type: string, example: /images/w1.png } }
+        category: { type: object, properties: { id: { type: string }, name: { type: string }, slug: { type: string } } }
+        subcategory: { type: string, nullable: true }
+        bestseller: { type: boolean }
+        inStock: { type: boolean }
+        variants: { type: array, items: { $ref: '#/components/schemas/Variant' } }
+        rating: { type: object, properties: { average: { type: number }, count: { type: integer } } }
+    Paginated:
+      type: object
+      properties:
+        page: { type: integer }
+        limit: { type: integer }
+        total: { type: integer }
+        totalPages: { type: integer }
+    CartItem:
+      type: object
+      required: [variantId, quantity]
+      properties:
+        variantId: { type: string }
+        quantity: { type: integer, minimum: 1, maximum: 10 }
+    Address:
+      type: object
+      required: [fullName, phone, line1, city, state, postcode]
+      properties:
+        fullName: { type: string }
+        phone: { type: string, example: '+61 400 123 456' }
+        line1: { type: string }
+        line2: { type: string }
+        city: { type: string }
+        state: { type: string, example: NSW }
+        postcode: { type: string, example: '2000' }
+        country: { type: string, default: Australia }
+    Totals:
+      type: object
+      properties:
+        subtotal: { type: number }
+        discount: { type: number }
+        shippingFee: { type: number }
+        total: { type: number }
+    Order:
+      type: object
+      properties:
+        id: { type: string }
+        number: { type: string, example: I2TQV6YM }
+        status: { type: string, enum: [PENDING, PAID, PROCESSING, SHIPPED, DELIVERED, CANCELLED] }
+        subtotal: { type: number }
+        discount: { type: number }
+        shippingFee: { type: number }
+        total: { type: number }
+        currency: { type: string, example: AUD }
+        couponCode: { type: string, nullable: true }
+        shippingAddress: { $ref: '#/components/schemas/Address' }
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              name: { type: string }
+              size: { type: string }
+              unitPrice: { type: number }
+              quantity: { type: integer }
+              lineTotal: { type: number }
+        createdAt: { type: string, format: date-time }
+
+paths:
+  /health:
+    get:
+      tags: [Health]
+      summary: Liveness probe
+      responses: { '200': { description: Process is up } }
+  /health/ready:
+    get:
+      tags: [Health]
+      summary: Readiness probe (database, Redis, integrations)
+      responses:
+        '200': { description: Ready }
+        '503': { description: Database unreachable }
+
+  /api/auth/register:
+    post:
+      tags: [Auth]
+      summary: Create an account and start a session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, email, password]
+              properties:
+                name: { type: string }
+                email: { type: string, format: email }
+                password: { type: string, description: '8+ chars with upper, lower and a digit' }
+      responses:
+        '201': { description: Created, content: { application/json: { schema: { type: object, properties: { user: { $ref: '#/components/schemas/User' } } } } } }
+        '400': { $ref: '#/components/responses/Error' }
+        '409': { $ref: '#/components/responses/Error' }
+  /api/auth/login:
+    post:
+      tags: [Auth]
+      summary: Log in (sets the dd_token cookie)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email: { type: string, example: customer@desidrapes.com }
+                password: { type: string, example: Customer@123 }
+      responses:
+        '200': { description: Logged in }
+        '401': { $ref: '#/components/responses/Error' }
+        '429': { description: Too many attempts }
+  /api/auth/logout:
+    post: { tags: [Auth], summary: Clear the session cookie, responses: { '204': { description: Logged out } } }
+  /api/auth/me:
+    get:
+      tags: [Auth]
+      summary: Current user (or null)
+      responses: { '200': { description: OK } }
+  /api/auth/forgot-password:
+    post:
+      tags: [Auth]
+      summary: Email a reset link (delivered by n8n); same response whether or not the email exists
+      requestBody: { required: true, content: { application/json: { schema: { type: object, properties: { email: { type: string } } } } } }
+      responses: { '200': { description: Accepted } }
+  /api/auth/reset-password:
+    post:
+      tags: [Auth]
+      summary: Set a new password using a reset token
+      requestBody: { required: true, content: { application/json: { schema: { type: object, properties: { token: { type: string }, password: { type: string } } } } } }
+      responses: { '200': { description: Updated }, '400': { $ref: '#/components/responses/Error' } }
+
+  /api/products:
+    get:
+      tags: [Products]
+      summary: List products (filter, search, sort, paginate; Redis-cached)
+      parameters:
+        - { name: category, in: query, schema: { type: string, enum: [kids, men, women] } }
+        - { name: subcategory, in: query, schema: { type: string } }
+        - { name: search, in: query, schema: { type: string } }
+        - { name: minPrice, in: query, schema: { type: number } }
+        - { name: maxPrice, in: query, schema: { type: number } }
+        - { name: bestseller, in: query, schema: { type: boolean } }
+        - { name: inStock, in: query, schema: { type: boolean } }
+        - { name: sort, in: query, schema: { type: string, enum: [newest, price_asc, price_desc, name, popular] } }
+        - $ref: '#/components/parameters/Page'
+        - { name: limit, in: query, schema: { type: integer, maximum: 48, default: 12 } }
+      responses:
+        '200':
+          description: OK (x-cache header shows HIT/MISS)
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Paginated'
+                  - type: object
+                    properties: { items: { type: array, items: { $ref: '#/components/schemas/Product' } } }
+  /api/products/categories:
+    get: { tags: [Products], summary: Categories with subcategory counts, responses: { '200': { description: OK } } }
+  /api/products/{slug}:
+    get:
+      tags: [Products]
+      summary: Product detail with reviews and related products
+      parameters: [{ name: slug, in: path, required: true, schema: { type: string } }]
+      responses: { '200': { description: OK }, '404': { $ref: '#/components/responses/Error' } }
+  /api/products/{id}/reviews:
+    post:
+      tags: [Products]
+      summary: Create or update your review (verified purchasers only)
+      security: [{ cookieAuth: [] }, { bearerAuth: [] }]
+      parameters: [{ $ref: '#/components/parameters/Id' }]
+      requestBody: { required: true, content: { application/json: { schema: { type: object, properties: { rating: { type: integer, minimum: 1, maximum: 5 }, comment: { type: string } } } } } }
+      responses: { '201': { description: Saved }, '403': { $ref: '#/components/responses/Error' } }
+
+  /api/orders/quote:
+    post:
+      tags: [Orders]
+      summary: Price a cart server-side (real prices, stock issues, coupon validation)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                items: { type: array, items: { $ref: '#/components/schemas/CartItem' } }
+                couponCode: { type: string, example: WELCOME10 }
+      responses: { '200': { description: Quote } }
+  /api/orders:
+    get:
+      tags: [Orders]
+      summary: My orders
+      security: [{ cookieAuth: [] }, { bearerAuth: [] }]
+      responses: { '200': { description: OK } }
+    post:
+      tags: [Orders]
+      summary: Place an order (atomically reserves stock) and get a checkout URL
+      security: [{ cookieAuth: [] }, { bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [items, shippingAddress]
+              properties:
+                items: { type: array, items: { $ref: '#/components/schemas/CartItem' } }
+                couponCode: { type: string }
+                shippingAddress: { $ref: '#/components/schemas/Address' }
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  order: { $ref: '#/components/schemas/Order' }
+                  checkoutUrl: { type: string, description: Stripe Checkout URL, or the mock checkout page in demo mode }
+        '409': { description: Stock conflict (sold out / insufficient quantity) }
+  /api/orders/{id}:
+    get:
+      tags: [Orders]
+      summary: Order detail (owner or admin); reconciles with Stripe if a webhook was missed
+      security: [{ cookieAuth: [] }, { bearerAuth: [] }]
+      parameters: [{ $ref: '#/components/parameters/Id' }]
+      responses: { '200': { description: OK }, '404': { $ref: '#/components/responses/Error' } }
+  /api/orders/{id}/pay:
+    post:
+      tags: [Orders]
+      summary: New checkout URL for an unpaid order
+      security: [{ cookieAuth: [] }]
+      parameters: [{ $ref: '#/components/parameters/Id' }]
+      responses: { '200': { description: OK } }
+  /api/orders/{id}/cancel:
+    post:
+      tags: [Orders]
+      summary: Cancel an unpaid order and release its stock
+      security: [{ cookieAuth: [] }]
+      parameters: [{ $ref: '#/components/parameters/Id' }]
+      responses: { '200': { description: OK } }
+
+  /api/payments/config:
+    get: { tags: [Payments], summary: Active payment provider (stripe | mock), responses: { '200': { description: OK } } }
+  /api/payments/webhook:
+    post:
+      tags: [Payments]
+      summary: Stripe webhook (signature-verified; handles completed, failed and expired sessions)
+      responses: { '200': { description: Received }, '400': { description: Bad signature } }
+  /api/payments/mock/{orderId}/confirm:
+    post:
+      tags: [Payments]
+      summary: Simulate a payment outcome (only when Stripe is not configured)
+      security: [{ cookieAuth: [] }]
+      parameters: [{ name: orderId, in: path, required: true, schema: { type: string } }]
+      requestBody: { required: true, content: { application/json: { schema: { type: object, properties: { outcome: { type: string, enum: [success, failure] } } } } } }
+      responses: { '200': { description: OK } }
+
+  /api/notifications:
+    get:
+      tags: [Notifications]
+      summary: Latest notifications and unread count
+      security: [{ cookieAuth: [] }]
+      responses: { '200': { description: OK } }
+  /api/notifications/read-all:
+    post: { tags: [Notifications], summary: Mark all as read, security: [{ cookieAuth: [] }], responses: { '204': { description: Done } } }
+
+  /api/ai/status:
+    get: { tags: [AI], summary: Whether an LLM is configured, responses: { '200': { description: OK } } }
+  /api/ai/assistant:
+    post:
+      tags: [AI]
+      summary: AI stylist grounded in the live catalog (keyword fallback when no LLM is configured)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message: { type: string, example: Wedding outfit for my husband under $150 }
+                history: { type: array, items: { type: object, properties: { role: { type: string }, content: { type: string } } } }
+      responses: { '200': { description: Reply with recommended products } }
+  /api/ai/product-description:
+    post:
+      tags: [AI]
+      summary: Generate a product description (admin)
+      security: [{ cookieAuth: [] }]
+      responses: { '200': { description: OK } }
+
+  /api/admin/stats:
+    get: { tags: [Admin], summary: Dashboard KPIs, 30-day revenue, top sellers, low stock, security: [{ cookieAuth: [] }], responses: { '200': { description: OK }, '403': { $ref: '#/components/responses/Error' } } }
+  /api/admin/orders:
+    get:
+      tags: [Admin]
+      summary: All orders (filter by status, search)
+      security: [{ cookieAuth: [] }]
+      parameters:
+        - { name: status, in: query, schema: { type: string } }
+        - { name: search, in: query, schema: { type: string } }
+        - $ref: '#/components/parameters/Page'
+      responses: { '200': { description: OK } }
+  /api/admin/orders/{id}/status:
+    patch:
+      tags: [Admin]
+      summary: Move an order through its lifecycle (cancelling a paid order restocks and refunds)
+      security: [{ cookieAuth: [] }]
+      parameters: [{ $ref: '#/components/parameters/Id' }]
+      requestBody: { required: true, content: { application/json: { schema: { type: object, properties: { status: { type: string } } } } } }
+      responses: { '200': { description: OK }, '400': { description: Invalid transition } }
+  /api/admin/products:
+    get: { tags: [Admin], summary: All products incl. archived, security: [{ cookieAuth: [] }], responses: { '200': { description: OK } } }
+    post: { tags: [Admin], summary: Create a product with per-size stock, security: [{ cookieAuth: [] }], responses: { '201': { description: Created } } }
+  /api/admin/products/{id}:
+    get: { tags: [Admin], summary: Product for editing, security: [{ cookieAuth: [] }], parameters: [{ $ref: '#/components/parameters/Id' }], responses: { '200': { description: OK } } }
+    put: { tags: [Admin], summary: Update a product and its sizes, security: [{ cookieAuth: [] }], parameters: [{ $ref: '#/components/parameters/Id' }], responses: { '200': { description: OK } } }
+    delete: { tags: [Admin], summary: Archive (soft-delete) a product, security: [{ cookieAuth: [] }], parameters: [{ $ref: '#/components/parameters/Id' }], responses: { '204': { description: Archived } } }
+  /api/admin/uploads:
+    post:
+      tags: [Admin]
+      summary: Upload a product image (JPEG/PNG/WebP, 5 MB max)
+      security: [{ cookieAuth: [] }]
+      requestBody: { content: { multipart/form-data: { schema: { type: object, properties: { image: { type: string, format: binary } } } } } }
+      responses: { '201': { description: Uploaded } }
+  /api/admin/coupons:
+    get: { tags: [Admin], summary: List coupons, security: [{ cookieAuth: [] }], responses: { '200': { description: OK } } }
+    post: { tags: [Admin], summary: Create a coupon, security: [{ cookieAuth: [] }], responses: { '201': { description: Created } } }
+  /api/admin/users:
+    get: { tags: [Admin], summary: List users, security: [{ cookieAuth: [] }], responses: { '200': { description: OK } } }
+  /api/admin/users/{id}/role:
+    patch: { tags: [Admin], summary: Change a user's role, security: [{ cookieAuth: [] }], parameters: [{ $ref: '#/components/parameters/Id' }], responses: { '200': { description: OK } } }
+  /api/admin/audit-logs:
+    get: { tags: [Admin], summary: Audit trail, security: [{ cookieAuth: [] }], responses: { '200': { description: OK } } }
+
+  /api/internal/reports/daily:
+    get: { tags: [Internal (n8n)], summary: Yesterday's sales summary for the daily report workflow, security: [{ serviceKey: [] }], responses: { '200': { description: OK }, '401': { description: Bad key } } }
+  /api/internal/inventory/low-stock:
+    get: { tags: [Internal (n8n)], summary: Variants at or below their alert threshold, security: [{ serviceKey: [] }], responses: { '200': { description: OK } } }
+  /api/internal/orders/expire-stale:
+    post: { tags: [Internal (n8n)], summary: Cancel abandoned unpaid orders and release stock, security: [{ serviceKey: [] }], responses: { '200': { description: OK } } }
