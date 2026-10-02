@@ -1,18 +1,44 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Prata&display=swap'); /*support of outfit and parata font*/
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-a.active hr{
-    display: block;
+@layer base {
+  body {
+    @apply font-sans text-gray-800 antialiased;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-black;
+  }
 }
 
-*{
-    font-family: Outfit; 
+@layer components {
+  .prata-regular {
+    @apply font-prata font-normal;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center bg-black px-8 py-3 text-sm text-white transition hover:bg-gray-800 active:bg-gray-700 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center border border-gray-800 px-6 py-2.5 text-sm text-gray-800 transition hover:bg-gray-800 hover:text-white disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-page {
+    @apply min-w-9 rounded border border-gray-300 px-3 py-1.5 hover:border-black disabled:cursor-not-allowed disabled:opacity-40;
+  }
+  .input {
+    @apply w-full rounded border border-gray-300 px-3.5 py-2 text-sm outline-none transition focus:border-black;
+  }
+  .label {
+    @apply mb-1 block text-sm text-gray-700;
+  }
+  .field-error {
+    @apply mt-1 text-xs text-red-600;
+  }
+  .card {
+    @apply rounded-lg border border-gray-200 bg-white p-5;
+  }
 }
 
-.prata-regular {
-  font-family: "Prata", serif;
-  font-weight: 400;
-  font-style: normal;
+/* Active nav link underline (kept from the original design). */
+a.active hr {
+  display: block;
 }

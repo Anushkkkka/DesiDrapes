@@ -5,15 +5,25 @@
     "frontend",
     "backend"
   ],
+  "overrides": {
+    "@types/express": "^4.17.21",
+    "@types/express-serve-static-core": "^4.19.6"
+  },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "docker compose up --build",
-    "build": "npm --workspace frontend run build",
-    "lint": "npm --workspace frontend run lint",
-    "prisma:generate": "npx prisma generate",
-    "prisma:migrate": "npx prisma migrate dev --name init"
-  },
-  "devDependencies": {
-    "prisma": "6.19.3",
-    "tsx": "^4.19.0"
+    "dev:backend": "npm --workspace backend run dev",
+    "dev:frontend": "npm --workspace frontend run dev",
+    "build": "npm --workspace backend run build && npm --workspace frontend run build",
+    "lint": "npm --workspace backend run lint && npm --workspace frontend run lint",
+    "typecheck": "npm --workspace backend run typecheck && npm --workspace frontend run typecheck",
+    "test": "npm --workspace backend run test && npm --workspace frontend run test",
+    "prisma:generate": "npm --workspace backend run prisma:generate",
+    "prisma:migrate": "npm --workspace backend run prisma:migrate",
+    "db:seed": "npm --workspace backend run db:seed",
+    "db:reset": "npm --workspace backend run db:reset",
+    "e2e": "npm --workspace frontend run e2e"
   }
 }
