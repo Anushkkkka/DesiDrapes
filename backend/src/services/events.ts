@@ -10,7 +10,6 @@ import { logger } from '../lib/logger.js';
  */
 export type DomainEvent =
   | 'user.registered'
-  | 'order.created'
   | 'order.paid'
   | 'order.status_changed'
   | 'payment.failed'
@@ -18,34 +17,43 @@ export type DomainEvent =
   | 'password.reset_requested';
 
 const WEBHOOK_TIMEOUT_MS = 5_000;
-const RETRIES = 2;
+/**
+ * Backoff between attempts: 1s, 2s, 4s, 8s (~15s total). n8n answers 404 for a few seconds
+ * after it reports healthy while it registers webhooks (measured ~4s), so 404 is retried too.
+ */
+const RETRY_DELAYS_MS = [1_000, 2_000, 4_000, 8_000];
 
 async function postWithRetry(url: string, body: unknown): Promise<void> {
-  for (let attempt = 0; attempt <= RETRIES; attempt++) {
+  for (let attempt = 0; ; attempt++) {
     try {
       const res = await fetch(url, {
         method: 'POST',
-        headers: { 'content-type': 'application/json' },
+        // n8n workflows reject events without this shared secret, so nobody else can
+        // make the store send emails by calling the webhook URLs directly.
+        headers: { 'content-type': 'application/json', 'x-api-key': env.N8N_API_KEY ?? '' },
         body: JSON.stringify(body),
         signal: AbortSignal.timeout(WEBHOOK_TIMEOUT_MS),
       });
       if (res.ok) return;
-      // 404 means the workflow isn't imported/active; retrying won't help.
-      if (res.status === 404) throw new Error('n8n webhook not registered (is the workflow active?)');
+      if (res.status === 404) throw new Error('n8n webhook not registered (n8n starting, or workflow not published)');
       throw new Error(`n8n responded ${res.status}`);
     } catch (err) {
-      if (attempt === RETRIES || (err as Error).message.includes('not registered')) throw err;
-      await new Promise((r) => setTimeout(r, 500 * 2 ** attempt));
+      if (attempt >= RETRY_DELAYS_MS.length) throw err;
+      await new Promise((r) => setTimeout(r, RETRY_DELAYS_MS[attempt]));
     }
   }
 }
 
 /**
  * Fire-and-forget: automation failures are logged, never surfaced to the
- * customer, so checkout keeps working if n8n is down.
+ * customer, so checkout keeps working if n8n is down. Delivery is best-effort:
+ * an event is dropped (and logged) if n8n stays unreachable past the retry window.
  */
 export function publishEvent(event: DomainEvent, payload: Record<string, unknown>): void {
   if (!env.N8N_WEBHOOK_BASE_URL || env.isTest) return;
+  if (!env.N8N_API_KEY) {
+    logger.warn({ event }, 'N8N_API_KEY is not set; n8n will reject this event');
+  }
   const url = `${env.N8N_WEBHOOK_BASE_URL.replace(/\/$/, '')}/${event}`;
   const body = { event, occurredAt: new Date().toISOString(), data: payload };
   postWithRetry(url, body)
