@@ -67,7 +67,7 @@ services:
       STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY:-}
       STRIPE_WEBHOOK_SECRET: ${STRIPE_WEBHOOK_SECRET:-}
       N8N_WEBHOOK_BASE_URL: http://n8n:5678/webhook
-      N8N_API_KEY: ${N8N_API_KEY:-local-n8n-service-key}
+      N8N_API_KEY: ${N8N_API_KEY:?set N8N_API_KEY in .env (see .env.example)}
       ADMIN_ALERT_EMAIL: ${ADMIN_ALERT_EMAIL:-admin@desidrapes.local}
       AI_BASE_URL: ${AI_BASE_URL:-https://api.openai.com/v1}
       AI_API_KEY: ${AI_API_KEY:-}
@@ -94,7 +94,9 @@ services:
         condition: service_healthy
 
   n8n:
-    image: n8nio/n8n:1.123.5
+    # 2.x is required: its CLI import records workflow history and `publish:workflow`
+    # can activate imported workflows (1.x could not activate CLI-imported workflows).
+    image: n8nio/n8n:2.42.2
     restart: unless-stopped
     # Imports the workflows committed in ./n8n on every start, then launches n8n.
     entrypoint: ["/bin/sh", "/bootstrap/bootstrap.sh"]
@@ -108,15 +110,17 @@ services:
       N8N_PERSONALIZATION_ENABLED: "false"
       N8N_ENCRYPTION_KEY: ${N8N_ENCRYPTION_KEY:-local-dev-n8n-encryption-key}
       N8N_BLOCK_ENV_ACCESS_IN_NODE: "false"
-      # Recommended settings (silence n8n 1.x deprecation warnings)
-      DB_SQLITE_POOL_SIZE: "2"
+      # Recommended settings.
+      # Do NOT set DB_SQLITE_POOL_SIZE: pooled SQLite deadlocks the CLI workflow import
+      # in bootstrap.sh ("Timeout waiting for lock SqliteWriteConnectionMutex").
       N8N_RUNNERS_ENABLED: "true"
       N8N_GIT_NODE_DISABLE_BARE_REPOS: "true"
       GENERIC_TIMEZONE: ${TZ:-Australia/Sydney}
       TZ: ${TZ:-Australia/Sydney}
       # Read by the workflows via $env
-      DESIDRAPES_API_URL: http://backend:4000
-      DESIDRAPES_API_KEY: ${N8N_API_KEY:-local-n8n-service-key}
+      # Override with http://host.docker.internal:4000 when the API runs outside Docker (npm run dev:backend)
+      DESIDRAPES_API_URL: ${DESIDRAPES_API_URL:-http://backend:4000}
+      DESIDRAPES_API_KEY: ${N8N_API_KEY:?set N8N_API_KEY in .env (see .env.example)}
       DESIDRAPES_STORE_URL: http://localhost:3000
       DESIDRAPES_FROM_EMAIL: DesiDrapes <orders@desidrapes.local>
       DESIDRAPES_ADMIN_EMAIL: ${ADMIN_ALERT_EMAIL:-admin@desidrapes.local}

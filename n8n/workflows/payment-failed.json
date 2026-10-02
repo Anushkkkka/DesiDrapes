@@ -1,0 +1,152 @@
+{
+  "id": "ddPaymentFail001",
+  "name": "DesiDrapes: payment failed → customer",
+  "active": false,
+  "nodes": [
+    {
+      "id": "payment.failed-trigger",
+      "name": "On payment.failed",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        260,
+        300
+      ],
+      "webhookId": "desidrapes-payment.failed",
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "payment.failed",
+        "responseMode": "onReceived",
+        "options": {}
+      }
+    },
+    {
+      "id": "verify-api-key",
+      "name": "Verify API key",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        780,
+        300
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "key-configured",
+              "leftValue": "={{ $env.DESIDRAPES_API_KEY ?? \"\" }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "key-matches",
+              "leftValue": "={{ $json.headers[\"x-api-key\"] ?? \"\" }}",
+              "rightValue": "={{ $env.DESIDRAPES_API_KEY }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "email-customer-payment-failed",
+      "name": "Email customer: payment failed",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        520,
+        300
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "ddMailpitSmtp001",
+          "name": "Mailpit SMTP (local)"
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "parameters": {
+        "fromEmail": "={{ $env.DESIDRAPES_FROM_EMAIL }}",
+        "toEmail": "={{ $json.body.data.email }}",
+        "subject": "=Your payment did not go through",
+        "emailFormat": "html",
+        "html": "=<div style=\"font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:0 auto;color:#333\">\n  <div style=\"padding:20px 0;border-bottom:2px solid #7a1f3d\">\n    <span style=\"font-family:Georgia,serif;font-size:24px;color:#7a1f3d\">DesiDrapes</span>\n  </div>\n  <h2 style=\"font-weight:normal;margin:24px 0 12px\">Hi {{ String($json.body.data.name ?? '').replace(/[&<>\"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'})[c]) }},</h2>\n  <p>Your payment of {{ '$' + Number($json.body.data.total).toFixed(2) }} couldn't be completed, so we cancelled the order and released the items back to stock.</p>\n  <p>No money was taken. You're welcome to try again any time.</p>\n  <p style=\"margin:24px 0\"><a href=\"{{ $env.DESIDRAPES_STORE_URL + \"/cart\" }}\" style=\"background:#111;color:#fff;padding:12px 22px;text-decoration:none\">Return to the store</a></p>\n  <p style=\"margin-top:32px;font-size:12px;color:#999;border-top:1px solid #eee;padding-top:12px\">\n    DesiDrapes · Indian ethnic wear, delivered across Australia.<br>\n    This is a demo store running locally; this email was captured by Mailpit and never sent to a real inbox.\n  </p>\n</div>",
+        "options": {
+          "appendAttribution": false
+        }
+      }
+    },
+    {
+      "id": "reject-unauthorised",
+      "name": "Reject: invalid API key",
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        780,
+        500
+      ],
+      "parameters": {
+        "errorType": "errorMessage",
+        "errorMessage": "Rejected event: missing or invalid x-api-key header"
+      }
+    }
+  ],
+  "connections": {
+    "On payment.failed": {
+      "main": [
+        [
+          {
+            "node": "Verify API key",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verify API key": {
+      "main": [
+        [
+          {
+            "node": "Email customer: payment failed",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Reject: invalid API key",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all"
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": [],
+  "versionId": "c7b4c3de-2c72-4f2d-8af9-3a4f7fa81812"
+}

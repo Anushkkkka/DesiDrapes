@@ -192,7 +192,7 @@ export async function createOrder(user: { id: string; email: string }, items: Ca
     notify(user.id, 'ORDER_PLACED', `Order #${order.id.slice(-8).toUpperCase()} placed. Complete payment to confirm it.`),
     audit('order.created', { userId: user.id, entity: 'Order', entityId: order.id, metadata: { total: quote.totals.total } }),
   ]);
-  publishEvent('order.created', { orderId: order.id, email: user.email, total: quote.totals.total });
+  // Customer-facing emails wait for `order.paid`; an unpaid order isn't confirmed yet.
   for (const item of lowStock) publishEvent('inventory.low', { ...item, adminEmail: env.ADMIN_ALERT_EMAIL });
 
   return order;
