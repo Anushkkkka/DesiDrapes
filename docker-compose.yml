@@ -108,6 +108,10 @@ services:
       N8N_PERSONALIZATION_ENABLED: "false"
       N8N_ENCRYPTION_KEY: ${N8N_ENCRYPTION_KEY:-local-dev-n8n-encryption-key}
       N8N_BLOCK_ENV_ACCESS_IN_NODE: "false"
+      # Recommended settings (silence n8n 1.x deprecation warnings)
+      DB_SQLITE_POOL_SIZE: "2"
+      N8N_RUNNERS_ENABLED: "true"
+      N8N_GIT_NODE_DISABLE_BARE_REPOS: "true"
       GENERIC_TIMEZONE: ${TZ:-Australia/Sydney}
       TZ: ${TZ:-Australia/Sydney}
       # Read by the workflows via $env
