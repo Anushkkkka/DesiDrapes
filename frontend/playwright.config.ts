@@ -8,7 +8,10 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './e2e',
   timeout: 45_000,
-  fullyParallel: false, // tests share one seeded database
+  // Tests share one seeded database, so run strictly one at a time. fullyParallel:false
+  // alone still runs different files in parallel workers (and multiplies browser memory).
+  fullyParallel: false,
+  workers: 1,
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? [['github'], ['html', { open: 'never' }]] : 'list',
   use: {
